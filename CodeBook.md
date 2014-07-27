@@ -16,13 +16,21 @@ values for this column are described in the features.txt file
 
 # The datasets created during the process are as follows:
 x_test - contains original measurementstest set
+
 x_train - contains original measurements training set
+
 x_full - contains the joined training and test sets
+
 x_tmsd - contains only the mean and standard deviation values extracted from x_full
+
 actnames - contains the activities labels for the full set
+
 subjects - contains the joined test and training subjects data sets
+
 fullset - contains actnames, subjects and x_tmsd joined together
+
 meltset - is created by applying the melt operation to fullset
+
 tidyset - contains the final tidy data with the averages of every variable already calculated
 
 
