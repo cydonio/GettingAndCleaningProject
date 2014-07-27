@@ -1,11 +1,10 @@
 GettingAndCleaningProject
 =========================
 
+#  Getting and Cleaning Data Course Project
+#
 
-##  Getting and Cleaning Data Course Project
-##
-
-## There is only one script (run_analysis.R) which performs all the steps to collecta and create the final tidy dataset
+# There is only one script (run_analysis.R) which performs all the steps to collecta and create the final tidy dataset
 
 # The general process to obtain the final tidy dataset was as follows:
 - Read the test data set
