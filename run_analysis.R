@@ -11,7 +11,7 @@ x_train = read.csv("C:\\Coursera\\DataScience\\GettingData\\Project\\UCI HAR Dat
 #Append x.test dataset to x.train
 x_full = rbind(x_train, x_test)
 
-# Extract means and SDs for each measurement (x_train contains now both datasets)
+# Extract means and SDs for each measurement (x_full contains now both datasets)
 # First, set a vector with the temporary names of all the mean and std dev variables
 meansstds = c("V1","V2","V3","V41","V42","V43","V81","V82","V83","V121","V122","V123","V161","V162","V163","V201","V214","V227","V240","V253","V266","V267","V268",
 "V294","V295","V296","V345","V346","V347","V373","V374","V375","V424","V425","V426","V452","V453","V454","V503","V513","V516","V526","V529","V539","V542",
@@ -42,10 +42,12 @@ namesvars = c("tBodyAcc-mean()-X","tBodyAcc-mean()-Y","tBodyAcc-mean()-Z","tGrav
  "fBodyBodyGyroMag-std()","fBodyBodyGyroJerkMag-std()")
  names(x_tmsd) = namesvars
  
-#read activities
+#read both activities file and join together into a single data set
 actnamestr = read.csv("C:\\Coursera\\DataScience\\GettingData\\Project\\UCI HAR Dataset\\train\\y_train.txt", header = FALSE)
 actnamestst = read.csv("C:\\Coursera\\DataScience\\GettingData\\Project\\UCI HAR Dataset\\test\\y_test.txt", header = FALSE)
 actnames = rbind(actnamestr, actnamestst)
+
+# set descriptive names for the activities
 actnames[actnames == 1] = "WALKING"
 actnames[actnames == 2] = "WALKING_UPSTAIR"
 actnames[actnames == 3] = "WALKING_DOWNSTAIR"
@@ -54,16 +56,16 @@ actnames[actnames == 5] = "STANDING"
 actnames[actnames == 6] = "LAYING"
 names(actnames) = "Activity"
  
-# Read subjects data sets
+# Read subjects data sets and join together into a single data set 
 subjectstr = read.csv("C:\\Coursera\\DataScience\\GettingData\\Project\\UCI HAR Dataset\\train\\subject_train.txt", header = FALSE)
 subjectstst = read.csv("C:\\Coursera\\DataScience\\GettingData\\Project\\UCI HAR Dataset\\test\\subject_test.txt", header = FALSE) 
 subjects = rbind(subjectstr, subjectstst)
 names(subjects) = "Subject"
 
-# put all the details together
+# put all the details together into a single data set
 fullset = cbind(subjects, actnames, x_tmsd)
 
-# melt the full dataset
+# melt the full dataset to get separate variables into each row
 library(reshape2)
 meltset = melt(fullset, id = c("Subject", "Activity"))
 
