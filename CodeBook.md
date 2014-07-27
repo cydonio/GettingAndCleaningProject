@@ -25,6 +25,7 @@ fullset - contains actnames, subjects and x_tmsd joined together
 meltset - is created by applying the melt operation to fullset
 tidyset - contains the final tidy data with the averages of every variable already calculated
 
+
 # The general process to obtain the final tidy dataset was as follows:
 - Read the test data set into x_test
 - Read the training dataset into x_train
